@@ -2,9 +2,6 @@ package com.zipcodewilmington.phonebook;
 
 import org.junit.Test;
 
-import java.util.Collection;
-import java.util.Collections;
-
 import static org.junit.Assert.*;
 
 /**
@@ -15,6 +12,15 @@ public class PhoneBookTest {
     /**
      * Created by dan on 6/14/17.
      */
+
+    @Test
+    public void testNullLookupPhonebook() {
+
+        String expected = null;
+        PhoneBook ph = new PhoneBook();
+        String actual = ph.lookup("joe");
+        assertEquals(expected,actual);
+    }
 
     @Test
     public void testAddToPhonebook() {
@@ -62,4 +68,33 @@ public class PhoneBookTest {
         assertEquals(listOfNames,actual);
     }
 
+    // Phase II
+    @Test
+    public void testReverseLookupPhonebook() {
+
+        String num = "123 4567";
+        String name = "joe";
+        PhoneBook ph = new PhoneBook();
+        ph.add(name, num);
+        String actual = ph.reverseLookup(num);
+        assertEquals(name,actual);
+    }
+
+    // Phase III
+
+    @Test
+    public void testMultiAddPhonebook() {
+
+        String name = "joe";
+        PhoneBook ph = new PhoneBook();
+        ph.add(name, "123", "456", "789");
+        ph.add("mary", "911", "411", "511");
+        String actual = ph.listNamesAndNumbers();
+        // too lazy
+        // assertEquals(name,actual);
+        System.out.println(actual);
+    }
+
+
+    // too lazy
 }
